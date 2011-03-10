@@ -4,6 +4,7 @@ from string import Template
 import os
 
 PATHS = dict({'dot.emacs':'${HOME}/.emacs', 
+              'dot.vimrc':'${HOME}/.vimrc',
               'elisp':'${HOME}/elisp'})
 
 def setup_paths():
