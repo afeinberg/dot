@@ -11,6 +11,9 @@ def setup_paths():
     for origin, destination in PATHS.items():
         home = os.environ['HOME']
         dest_real = Template(destination).substitute(HOME=home)
+        if(os.path.lexists(dest_real)):
+            print dest_real + " already exists, skipping"
+            continue
         print origin + " => " + dest_real
         os.symlink(os.path.realpath(origin), dest_real)
 if __name__ == "__main__":
