@@ -10,3 +10,6 @@
 [submodule "elisp/clojure-mode"]
 	path = elisp/clojure-mode
 	url = https://github.com/jochu/clojure-mode.git
+[submodule "elisp/scala-mode"]
+	path = elisp/scala-mode
+	url = git@github.com:afeinberg/scala-mode.git
