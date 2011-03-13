@@ -13,3 +13,6 @@
 [submodule "elisp/scala-mode"]
 	path = elisp/scala-mode
 	url = git@github.com:afeinberg/scala-mode.git
+[submodule "elisp/tuareg-mode"]
+	path = elisp/tuareg-mode
+	url = git@github.com:afeinberg/tuareg-mode.git
