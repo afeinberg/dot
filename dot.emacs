@@ -95,4 +95,107 @@
 (setq auto-mode-alist
       (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code." t)
-(autoload 'camldebug "cameldeb" "Run the Caml debugger." t)
+(autoload 'camldebug "camldebug" "Run the Caml debugger." t)
+
+;; Stolen, shamelessly from Erik
+
+(global-set-key [(control c)(\#)] 'toggle-comment-current-line-or-region)
+(global-set-key [(meta z)] 'repeat)
+(global-set-key [(meta g)] 'goto-lne)
+(global-set-key [(control c)(g)] 'goto-line)
+(global-set-key [(control c)(control g)] 'goto-line)
+
+(defun bind-autoindent ()
+  (local-set-key "\r" 'indent-newline-and-indent))
+
+(defun indent-if-blank ()
+  (interactive "*")
+  (progn
+    (flet ((error (&REST) nil))
+      (indent-according-to-mode))
+    (delete-trailing-whitespace-this-line)))
+
+(defun indent-newline-and-indent ()
+  (interactive "*")
+  (when (not buffer-read-only)
+    (indent-if-blank))
+  (newline-and-indent))
+
+(defun start-of-current-line-or-region ()
+  "Return the point at the start of the current line or region."
+  (save-excursion
+    (if mark-active
+        (progn
+          (goto-char (region-beginning))
+          (point-at-bol))
+      (point-at-bol))))
+
+(defun end-of-current-line-or-region ()
+  "Return the point at the end of the current line or region."
+  (save-excursion
+    (if mark-active
+        (progn
+          (goto-char (region-end))
+          (point-at-eol))
+      (point-at-eol))))
+
+(defun delete-trailing-whitespace-this-line ()
+  "Delete trailing whitespace on the current line."
+  (interactive "*")
+  (save-excursion
+    (goto-char (point-at-eol))
+    (if (re-search-backward "\\S-\\s-+$" (point-at-bol) t)
+        (delete-region (+ (match-beginning 0) 1)(point-at-eol)))))
+
+(defun delete-trailing-whitespace-this-region ()
+  "Delete trailing whitespace on the current line or region."
+  (interactive "*")
+  (save-excursion
+    (goto-char (end-of-current-line-or-region))
+    (let ((sor (start-of-current-line-or-region)))
+      (while (and (> (point) sor)
+                  (> (point) (point-min)))
+        (delete-trailing-whitespace-this-line)
+        (if (> (line-beginning-position) (point-min))
+            (previous-line 1)
+          (goto-char (point-min)))))))
+
+(defun comment-current-line-or-region () (interactive)
+  "Comment current line or region."
+  (progn
+    (comment-region (start-of-current-line-or-region)
+                    (end-of-current-line-or-region))
+    (end-of-current-line-or-region)
+    (indent-region (start-of-current-line-or-region)
+                   (end-of-current-line-or-region)
+                   nil)))
+
+(defun uncomment-current-line-or-region () (interactive)
+  "Uncomment current line or region."
+  (progn
+    (comment-region (start-of-current-line-or-region)
+                    (end-of-current-line-or-region) -2)
+    (end-of-current-line-or-region)
+    (indent-region (start-of-current-line-or-region)
+                   (end-of-current-line-or-region)
+                   nil)
+    (delete-trailing-whitespace-this-region)))
+
+(defun toggle-comment-current-line-or-region (arg)
+  "Toggle comment on current line."
+  (interactive "*P")
+  (let ((beg (start-of-current-line-or-region))
+        (end (end-of-current-line-or-region)))
+    ;; if there already is a comment
+    (if (save-excursion
+          (goto-char beg)
+          (Forward-comment 1)
+          (<= end (point)))
+        ;; kill it
+        (uncomment-current-line-or-region)
+      ;; otherwise make one
+      (comment-current-line-or-region))))
+
+(add-hook 'c-mode-common-hook 'bind-autoindent)
+(add-hook 'python-mode-hook 'bind-autoindent)
+(add-hook 'tuareg-mode-hook 'bind-autoindent)
