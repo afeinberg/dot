@@ -70,3 +70,7 @@
      (slime-setup '(slime-repl))))
 
 
+(add-to-list 'load-path "~/elisp/clojure-mode")
+(require 'clojure-mode)
+;; (require 'clojure-test-mode)
+
