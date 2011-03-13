@@ -1,3 +1,5 @@
+;; -*-emacs-lisp-*-
+
 (require 'cl)
 
 (defun disable (symbols)
@@ -6,11 +8,11 @@
 	      (funcall symbol 'nil)))
 	  symbols))
 
-(disable '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+(disable '(tool-bar-mode scroll-bar-mode))
 
 (setq user-mail-address "alex@strlen.net"
       browse-url-mozilla-program "firefox"
-      
+    
       line-number-mode 1
       column-number-mode 1
       
@@ -48,5 +50,8 @@
 (ido-mode)
 
 (add-to-list 'load-path "~/elisp")
+(add-to-list 'load-path "~/elisp/magit")
+
+(require 'magit)
 
 
