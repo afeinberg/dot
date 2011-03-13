@@ -54,4 +54,19 @@
 
 (require 'magit)
 
+(setq inferior-lisp-program "sbcl")
+(add-to-list 'load-path "~/elisp/slime")
+(require 'slime)
+
+(eval-after-load "slime"
+  '(progn
+     (add-to-list 'load-path "~/elisp/slime/contrib")
+     (require 'slime-fancy)
+     (require 'slime-banner)
+     (require 'slime-asdf)
+     (slime-banner-init)
+     (slime-asdf-init)
+     (setq slime-complete-symbol*-fancy t)
+     (slime-setup '(slime-repl))))
+
 
