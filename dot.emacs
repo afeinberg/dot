@@ -199,3 +199,14 @@
 (add-hook 'c-mode-common-hook 'bind-autoindent)
 (add-hook 'python-mode-hook 'bind-autoindent)
 (add-hook 'tuareg-mode-hook 'bind-autoindent)
+
+(add-to-list 'load-path "~/elisp/color-theme-6.6.0")
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-hober)))
+
+(let ((local-init-file "~/.emacs.local"))
+  (when (file-readable-p local-init-file)
+    (load-file local-init-file)))
