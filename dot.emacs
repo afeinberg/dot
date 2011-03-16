@@ -207,6 +207,15 @@
      (color-theme-initialize)
      (color-theme-hober)))
 
+;; minor flymake configuration
+
+
+(require 'flymake)
+
+(add-to-list 
+ 'flymake-allowed-file-name-masks 
+ '("\\.hpp$" flymake-master-make-header-init flymake-master-cleanup))
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
