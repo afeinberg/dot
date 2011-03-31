@@ -1,5 +1,5 @@
 #!/usr/bin/python
-"""Setups up my dotfiles"""
+"""Sets up my dotfiles"""
 
 from string import Template
 import os
