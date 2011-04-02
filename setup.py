@@ -7,6 +7,7 @@ import os
 PATHS = dict({'dot.emacs':'${HOME}/.emacs', 
               'dot.vimrc':'${HOME}/.vimrc',
               'dot.Xdefaults':'${HOME}/.Xdefaults',
+              'dot.xmonad':'${HOME}/.xmonad',
               'elisp':'${HOME}/elisp'})
 
 def setup_paths():
