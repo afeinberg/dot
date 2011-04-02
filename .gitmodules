@@ -16,3 +16,6 @@
 [submodule "elisp/tuareg-mode"]
 	path = elisp/tuareg-mode
 	url = git@github.com:afeinberg/tuareg-mode.git
+[submodule "elisp/haskellmode-emacs"]
+	path = elisp/haskellmode-emacs
+	url = git://github.com/afeinberg/haskellmode-emacs.git

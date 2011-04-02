@@ -8,7 +8,11 @@
 	      (funcall symbol 'nil)))
 	  symbols))
 
-(disable '(tool-bar-mode scroll-bar-mode))
+(let ((to-disable '(tool-bar-mode scroll-bar-mode)))
+  (progn 
+    (unless (eq window-system 'ns)
+      (add-to-list 'to-disable 'menu-bar-mode))
+    (disable to-disable)))
 
 (setq user-mail-address "alex@strlen.net"
       browse-url-mozilla-program "firefox"
@@ -96,6 +100,10 @@
       (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code." t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger." t)
+
+(load "~/elisp/haskellmode-emacs/haskell-site-file")
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 ;; Stolen, shamelessly from Erik
 
@@ -202,10 +210,10 @@
 
 (add-to-list 'load-path "~/elisp/color-theme-6.6.0")
 (require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-hober)))
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-hober)))
 
 ;; minor flymake configuration
 
