@@ -1,1 +1,5 @@
-emacs*geometry: 132x60
+URxvt*letterSpace: 0
+URxvt*font: xft:Mensch:size=9:medium:roman:autohint=true:antialias=true
+URxvt*boldFont: xft:Mensch:size=9:bold:roman:autohint=true:antialias=true
+URxvt*scrollBar: false
+URxvt*saveLines: 1000
