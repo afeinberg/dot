@@ -224,6 +224,9 @@
  'flymake-allowed-file-name-masks 
  '("\\.hpp$" flymake-master-make-header-init flymake-master-cleanup))
 
+(require 'textile-mode)
+(add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
