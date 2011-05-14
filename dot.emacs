@@ -229,6 +229,8 @@
 (setq ipython-command "/usr/bin/ipython")
 (require 'ipython)
 
+(require 'go-mode-load)
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
