@@ -217,7 +217,6 @@
 
 ;; minor flymake configuration
 
-
 (require 'flymake)
 
 (add-to-list 
@@ -226,6 +225,9 @@
 
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
+
+(setq ipython-command "/usr/bin/ipython")
+(require 'ipython)
 
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)

@@ -1,5 +1,15 @@
+! -*-conf-xdefaults-*-
+
 URxvt*letterSpace: 0
-URxvt*font: xft:Mensch:size=9:medium:roman:autohint=true:antialias=true
-URxvt*boldFont: xft:Mensch:size=9:bold:roman:autohint=true:antialias=true
+URxvt*font: xft:Mensch:size=11:medium:roman:autohint=true:antialias=true
+URxvt*boldFont: xft:Mensch:size=11:bold:roman:autohint=true:antialias=true
 URxvt*scrollBar: false
 URxvt*saveLines: 1000
+!URxvt*foreground: grey90
+!URxvt*background: black
+
+Emacs.font: Mensch-12
+Emacs.FontBackend: xft
+Emacs.verticalScrollBars: off
+!Emacs.background: black
+!Emacs.foreground: grey90
