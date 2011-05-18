@@ -226,7 +226,7 @@
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 
-(setq ipython-command "/usr/bin/ipython")
+(setq py-python-command-args '("-pylab" "-colors" "NoColor"))
 (require 'ipython)
 
 (require 'go-mode-load)
