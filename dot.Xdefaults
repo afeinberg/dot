@@ -8,7 +8,7 @@ URxvt*saveLines: 1000
 !URxvt*foreground: grey90
 !URxvt*background: black
 
-Emacs.font: Mensch-12
+Emacs.font: Mensch-10
 Emacs.FontBackend: xft
 Emacs.verticalScrollBars: off
 !Emacs.background: black
