@@ -49,7 +49,7 @@ keysToAdd =
     , ("M-\\", sendMessage NextLayout)
     , ("M-s", scratchpadSpawnActionTerminal "gnome-terminal")
     , ("M-f", runOrRaise "google-chrome" (className =? "Google-chrome"))
-    , ("M-i", raiseMaybe (runInTerm "-title irssi" "sh -c 'irssi'") (title =? "irssi"))
+    , ("M-e", runOrRaise "emacs" (className =? "Emacs"))
     , ("M-C-l", spawn "xscreensaver-command -lock")
     , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
     , ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 2dB- unmute")
