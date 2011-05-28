@@ -47,8 +47,8 @@ conf = withUrgencyHook NoUrgencyHook $ ewmh defaultConfig
 keysToAdd =
     [ ("M-<Space>", spawn dmenuCmd)
     , ("M-\\", sendMessage NextLayout)
-    , ("M-s", scratchpadSpawnActionTerminal "urxvt")
-    , ("M-f", runOrRaise "firefox" (className =? "Namoroka"))
+    , ("M-s", scratchpadSpawnActionTerminal "gnome-terminal")
+    , ("M-f", runOrRaise "google-chrome" (className =? "Google-chrome"))
     , ("M-i", raiseMaybe (runInTerm "-title irssi" "sh -c 'irssi'") (title =? "irssi"))
     , ("M-C-l", spawn "xscreensaver-command -lock")
     , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
