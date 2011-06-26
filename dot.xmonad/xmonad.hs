@@ -28,7 +28,7 @@ main = do
         startupHook = startupHook conf >> setWMName "LG3D"
       }
 
-conf = withUrgencyHook NoUrgencyHook $ ewmh defaultConfig
+conf = withUrgencyHook NoUrgencyHook $ ewmh gnomeConfig
         { terminal = "gnome-terminal"
         , modMask = mod4Mask
         , focusedBorderColor = "gray80"
