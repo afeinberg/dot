@@ -15,7 +15,7 @@
     (disable to-disable)))
 
 (setq user-mail-address "alex@strlen.net"
-      browse-url-mozilla-program "firefox"
+      browse-url-mozilla-program "google-chrome"
     
       line-number-mode 1
       column-number-mode 1
