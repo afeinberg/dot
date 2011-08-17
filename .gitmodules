@@ -19,3 +19,6 @@
 [submodule "elisp/haskellmode-emacs"]
 	path = elisp/haskellmode-emacs
 	url = git://github.com/afeinberg/haskellmode-emacs.git
+[submodule "elisp/smex"]
+	path = elisp/smex
+	url = https://github.com/nonsequitur/smex.git

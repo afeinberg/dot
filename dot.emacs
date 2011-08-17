@@ -54,6 +54,14 @@
 (ido-mode)
 
 (add-to-list 'load-path "~/elisp")
+(add-to-list 'load-path "~/elisp/smex")
+
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex) 
+(global-set-key (kbd "M-X") 'smex-major-mode-commands) 
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
 (add-to-list 'load-path "~/elisp/magit")
 
 (require 'magit)
@@ -207,6 +215,7 @@
 (add-hook 'c-mode-common-hook 'bind-autoindent)
 (add-hook 'python-mode-hook 'bind-autoindent)
 (add-hook 'tuareg-mode-hook 'bind-autoindent)
+(add-hook 'go-mode-hook 'bind-autoindent)
 
 (add-to-list 'load-path "~/elisp/color-theme-6.6.0")
 (require 'color-theme)
