@@ -52,7 +52,7 @@ keysToAdd =
     , ("M-s", scratchpadSpawnActionTerminal "gnome-terminal")
     , ("M-f", runOrRaise "google-chrome" (className =? "Google-chrome"))
     , ("M-e", runOrRaise "emacs" (className =? "Emacs"))
-    , ("M-C-l", spawn "xscreensaver-command -lock")
+    , ("M-C-l", spawn "gnome-screensaver-command -lock")
     , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
     , ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 2dB- unmute")
     , ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 2dB+ unmute")
@@ -82,9 +82,9 @@ dmenuCmd = "dmenu_run -fn " ++ quoteStr defaultFont
 -------------------------------------------------------------------------------}
 
 --defaultFont = terminusFont
-defaultFont =  helveticaFont
-helveticaFont = "-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*"
---terminusFont = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
+defaultFont =  terminusFont
+--helveticaFont = "-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*"
+terminusFont = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
 
 
 {-------------------------------------------------------------------------------
