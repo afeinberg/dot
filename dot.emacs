@@ -4,9 +4,9 @@
 
 (defun disable (symbols)
   (mapcar (lambda (symbol)
-	    (when (fboundp symbol)
-	      (funcall symbol 'nil)))
-	  symbols))
+            (when (fboundp symbol)
+              (funcall symbol 'nil)))
+          symbols))
 
 (let ((to-disable '(tool-bar-mode scroll-bar-mode)))
   (progn 
@@ -16,7 +16,7 @@
 
 (setq user-mail-address "alex@strlen.net"
       browse-url-mozilla-program "google-chrome"
-    
+      
       line-number-mode 1
       column-number-mode 1
       
@@ -32,6 +32,56 @@
 (setq-default indent-tabs-mode nil
               tab-width 4
               c-basic-offset 4)
+
+(defun google-c-lineup-expression-plus-4 (langelem)
+  "From Google's C++ style guide
+
+Suitable for inclusion in `c-offsets-alist'."
+  (save-excursion
+    (back-to-indentation)
+    ;; Go to beginning of *previous* line:
+    (c-backward-syntactic-ws)
+    (back-to-indentation)
+    ;; We are making a reasonable assumption that if there is a control
+    ;; structure to indent past, it has to be at the beginning of the line.
+    (if (looking-at "\\(\\(if\\|for\\|while\\)\\s *(\\)")
+        (goto-char (match-end 1)))
+    (vector (+ 4 (current-column)))))
+
+(defconst af-c-style
+  `((c-basic-offset . 4)
+    (indent-tabs-mode . nil)
+    (c-offsets-alist .
+                     ((arglist-intro google-c-lineup-expression-plus-4)
+                      (func-decl-cont . ++)
+                      (member-init-intro . ++)
+                      (inher-intro . ++)
+                      (comment-intro . 0)
+                      (arglist-close . c-lineup-arglist)
+                      (topmost-intro . 0)
+                      (block-open . 0)
+                      (inline-open . 0)
+                      (substatement-open . 0)
+                      (statement-cont
+                       .
+                       (,(when (fboundp 'c-no-indent-after-java-annotations)
+                           'c-no-indent-after-java-annotations)
+                        ,(when (fboundp 'c-lineup-assignments)
+                           'c-lineup-assignments)
+                        ++))
+                      (label . /)
+                      (case-label . +)
+                      (statement-case-open . +)
+                      (statement-case-intro . +)       ; case w/o {
+                      (access-label . /)
+                      (innamespace . 0)
+                      (inclass . +))))
+  "My personal C/C++ style")
+
+(defun af-set-c-style ()
+  "Set to my personal C/C++ Style"
+  (interactive)
+  (c-add-style "AF" af-c-style t))
 
 (show-paren-mode t)
 

@@ -16,6 +16,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.Scratchpad
 import XMonad.Config.Gnome
+import XMonad.Hooks.ICCCMFocus 
 import System.IO
 
 {-------------------------------------------------------------------------------
@@ -25,7 +26,7 @@ import System.IO
 main = do
     xmonad conf
       {
-        startupHook = startupHook conf >> setWMName "LG3D"
+        startupHook = startupHook conf >> takeTopFocus >> setWMName "LG3D"        
       }
 
 conf = withUrgencyHook NoUrgencyHook $ ewmh gnomeConfig
@@ -35,8 +36,8 @@ conf = withUrgencyHook NoUrgencyHook $ ewmh gnomeConfig
         , normalBorderColor = "gray20"
         -- Shouldn't need gaps, but xmonad or tint2 are not respecting struts
         --, layoutHook = avoidStruts . smartBorders . gaps [(U,25)] $ layoutHook defaultConfig
-        , layoutHook = avoidStruts . smartBorders $ layoutHook defaultConfig                              
-        , manageHook = manageHook defaultConfig <+> manageDocks
+        , layoutHook = avoidStruts . smartBorders $ layoutHook gnomeConfig                              
+        , manageHook = manageHook gnomeConfig <+> manageDocks
         }
         `removeKeysP` keysToRemove
         `additionalKeysP` keysToAdd
