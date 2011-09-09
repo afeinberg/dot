@@ -163,6 +163,12 @@ Suitable for inclusion in `c-offsets-alist'."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+(require 'eshell)
+(require 'em-smart)
+(setq eshell-where-to-jump 'begin)
+(setq eshell-review-quick-commands nil)
+(setq eshell-smart-space-goes-to-end t)
+
 ;; Stolen, shamelessly from Erik
 
 (global-set-key [(control c)(\#)] 'toggle-comment-current-line-or-region)
