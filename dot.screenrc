@@ -1,0 +1,21 @@
+# -*-conf-space-*-                                                                                                                    
+nonblock on
+startup_message off
+vbell on
+
+activity "%c activity -> %n%f %t"
+bell "%c bell -> %n%f %t^G"
+vbell_msg " *beep* "
+
+termcapinfo xterm*|rxvt*|Eterm 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
+defhstatus "screen  (t) | $USER@H"
+hardstatus off
+                
+caption always "%?%F%:%?%C|%D|%M %d|%H%?%F%? %L=%-Lw%45>%n%f* %t%{-}%+Lw%-0<"
+
+escape ^zz
+defscrollback 10000
+
+bindkey "^[[5;2~" eval "copy" "stuff ^u"
+bindkey -m "^[[5;2~" stuff ^u
+bindkey -m "^[[6;2~" stuff ^d
