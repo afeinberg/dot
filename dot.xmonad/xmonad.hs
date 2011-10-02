@@ -30,7 +30,7 @@ main = do
       }
 
 conf = withUrgencyHook NoUrgencyHook $ ewmh gnomeConfig
-        { terminal = "gnome-terminal"
+        { terminal = "terminator"
         , modMask = mod4Mask
         , focusedBorderColor = "gray80"
         , normalBorderColor = "gray20"
@@ -50,7 +50,7 @@ conf = withUrgencyHook NoUrgencyHook $ ewmh gnomeConfig
 keysToAdd =
     [ ("M-<Space>", spawn dmenuCmd)
     , ("M-\\", sendMessage NextLayout)
-    , ("M-s", scratchpadSpawnActionTerminal "gnome-terminal")
+    , ("M-s", scratchpadSpawnActionTerminal "terminator")
     , ("M-f", runOrRaise "google-chrome" (className =? "Google-chrome"))
     , ("M-e", runOrRaise "emacs" (className =? "Emacs"))
     , ("M-C-l", spawn "gnome-screensaver-command -lock")
