@@ -29,15 +29,15 @@ main = do
         startupHook = startupHook conf >> takeTopFocus >> setWMName "LG3D"        
       }
 
-conf = withUrgencyHook NoUrgencyHook $ ewmh gnomeConfig
+conf = withUrgencyHook NoUrgencyHook $ ewmh defaultConfig
         { terminal = "terminator"
         , modMask = mod4Mask
         , focusedBorderColor = "gray80"
         , normalBorderColor = "gray20"
         -- Shouldn't need gaps, but xmonad or tint2 are not respecting struts
-        --, layoutHook = avoidStruts . smartBorders . gaps [(U,25)] $ layoutHook defaultConfig
-        , layoutHook = avoidStruts . smartBorders $ layoutHook gnomeConfig                              
-        , manageHook = manageHook gnomeConfig <+> manageDocks
+        , layoutHook = avoidStruts . smartBorders . gaps [(U,25)] $ layoutHook defaultConfig
+        --, layoutHook = avoidStruts . smartBorders $ layoutHook gnomeConfig                              
+        , manageHook = manageHook defaultConfig <+> manageDocks
         }
         `removeKeysP` keysToRemove
         `additionalKeysP` keysToAdd
@@ -50,10 +50,10 @@ conf = withUrgencyHook NoUrgencyHook $ ewmh gnomeConfig
 keysToAdd =
     [ ("M-<Space>", spawn dmenuCmd)
     , ("M-\\", sendMessage NextLayout)
-    , ("M-s", scratchpadSpawnActionTerminal "terminator")
+    , ("M-s", scratchpadSpawnActionTerminal "urxvt")
     , ("M-f", runOrRaise "google-chrome" (className =? "Google-chrome"))
     , ("M-e", runOrRaise "emacs" (className =? "Emacs"))
-    , ("M-C-l", spawn "gnome-screensaver-command -lock")
+    , ("M-C-l", spawn "xscreensaver-command -lock")
     , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
     , ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 2dB- unmute")
     , ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 2dB+ unmute")
@@ -61,7 +61,7 @@ keysToAdd =
     , ("<XF86AudioPlay>", spawn "mpc toggle")
     , ("<XF86AudioPrev>", spawn "mpc prev")
     , ("<XF86AudioNext>", spawn "mpc next")
-    , ("<XF86ScreenSaver>", spawn "xscreensaver-command -l")
+    , ("<XF86ScreenSaver>", spawn "xscreensaver-command -lock")
     ]
 
 -- Key bindings to remove from the default configuration
@@ -82,9 +82,7 @@ dmenuCmd = "dmenu_run -fn " ++ quoteStr defaultFont
   Fonts
 -------------------------------------------------------------------------------}
 
---defaultFont = terminusFont
 defaultFont =  terminusFont
---helveticaFont = "-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*"
 terminusFont = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
 
 
