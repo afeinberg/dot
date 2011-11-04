@@ -1,15 +1,17 @@
 ! -*-conf-xdefaults-*-
 
-URxvt*letterSpace: 0
-URxvt*font: xft:Mensch:size=10:medium:roman:autohint=true:antialias=true
-URxvt*boldFont: xft:Mensch:size=10:bold:roman:autohint=true:antialias=true
+!URxvt*letterSpace: 0
+!URxvt*font: xft:Mensch:size=10:medium:roman:autohint=true:antialias=true
+!URxvt*boldFont: xft:Mensch:size=10:bold:roman:autohint=true:antialias=true
+URxvt*foreground: white
+URxvt*background: black
+URxvt*font: terminus-12
 URxvt*scrollBar: false
 URxvt*saveLines: 1000
-URxvt*foreground: grey90
-URxvt*background: black
 
-Emacs.font: Mensch-10
-Emacs.FontBackend: xft
+Emacs.font: terminus-12
+!Emacs.FontBackend: xft
 Emacs.verticalScrollBars: off
-Emacs.background: black
-Emacs.foreground: white
+Emacs*foreground: white
+Emacs*background: black
+
