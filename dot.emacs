@@ -275,10 +275,10 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (add-to-list 'load-path "~/elisp/color-theme-6.6.0")
 (require 'color-theme)
-;; (eval-after-load "color-theme"
-;;   '(progn
-;;      (color-theme-initialize)
-;;      (color-theme-hober)))
+(require 'color-theme-solarized)
+(color-theme-initialize)
+(color-theme-solarized-dark)
+
 
 ;; minor flymake configuration
 

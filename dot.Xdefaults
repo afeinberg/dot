@@ -9,8 +9,8 @@ URxvt*font: terminus-12
 URxvt*scrollBar: false
 URxvt*saveLines: 1000
 
-Emacs.font: terminus-12
-!Emacs.FontBackend: xft
+!Emacs.font: terminus-12
+Emacs.FontBackend: xft
 Emacs.verticalScrollBars: off
 Emacs*foreground: white
 Emacs*background: black
