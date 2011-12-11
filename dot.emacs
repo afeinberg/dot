@@ -277,8 +277,8 @@ Suitable for inclusion in `c-offsets-alist'."
 (require 'color-theme)
 (require 'color-theme-solarized)
 (color-theme-initialize)
-(color-theme-solarized-dark)
-
+(unless (null window-system)
+  (color-theme-solarized-dark))
 
 ;; minor flymake configuration
 
