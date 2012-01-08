@@ -296,6 +296,11 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (require 'go-mode-load)
 
+(add-to-list 'load-path "~/elisp/lua-mode")
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
