@@ -217,10 +217,10 @@ the second for a 'normal' command, and the third for a multiline command.")
     (setq py-shell-input-prompt-1-regexp "^In \\[[0-9]+\\]: *"
           py-shell-input-prompt-2-regexp "^   [.][.][.]+: *" )
     ;; select a suitable color-scheme
-    (unless (member "-colors" py-python-command-args)
+    (unless (member "--colors" py-python-command-args)
       (setq py-python-command-args
             (nconc py-python-command-args
-                   (list "-colors"
+                   (list "--colors"
                          (cond
                            ((eq frame-background-mode 'dark)
                             "Linux")

@@ -15,11 +15,8 @@
     (disable to-disable)))
 
 (setq user-mail-address "alex@strlen.net"
-      browse-url-mozilla-program "google-chrome"
-      
       line-number-mode 1
       column-number-mode 1
-      
       backup-by-copying t
       backup-directory-alist '(("." . "~/.saves"))
       delete-old-versions t
@@ -273,13 +270,6 @@ Suitable for inclusion in `c-offsets-alist'."
 (add-hook 'tuareg-mode-hook 'bind-autoindent)
 (add-hook 'go-mode-hook 'bind-autoindent)
 
-(add-to-list 'load-path "~/elisp/color-theme-6.6.0")
-(require 'color-theme)
-(require 'color-theme-solarized)
-(color-theme-initialize)
-(unless (null window-system)
-  (color-theme-solarized-dark))
-
 ;; minor flymake configuration
 
 (require 'flymake)
@@ -291,7 +281,6 @@ Suitable for inclusion in `c-offsets-alist'."
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 
-(setq py-python-command-args '("-pylab" "-colors" "NoColor"))
 (require 'ipython)
 
 (require 'go-mode-load)
