@@ -9,7 +9,7 @@
 	url = git://sbcl.boinkor.net/slime.git
 [submodule "elisp/clojure-mode"]
 	path = elisp/clojure-mode
-	url = https://github.com/jochu/clojure-mode.git
+	url = https://github.com/technomancy/clojure-mode.git
 [submodule "elisp/scala-mode"]
 	path = elisp/scala-mode
 	url = git@github.com:afeinberg/scala-mode.git
