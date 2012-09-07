@@ -2,18 +2,6 @@
 
 (require 'cl)
 
-(defun disable (symbols)
-  (mapcar (lambda (symbol)
-            (when (fboundp symbol)
-              (funcall symbol 'nil)))
-          symbols))
-
-(let ((to-disable '(tool-bar-mode scroll-bar-mode)))
-  (progn 
-    (unless (eq window-system 'ns)
-      (add-to-list 'to-disable 'menu-bar-mode))
-    (disable to-disable)))
-
 (setq user-mail-address "alex@strlen.net"
       line-number-mode 1
       column-number-mode 1
@@ -151,10 +139,13 @@ Suitable for inclusion in `c-offsets-alist'."
 (require 'scala-mode-auto)
 
 (add-to-list 'load-path "~/elisp/tuareg-mode")
-(setq auto-mode-alist
-      (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code." t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger." t)
+
+(setq auto-mode-alist 
+      (append '(("\\.ml[ily]?$" . tuareg-mode)
+                ("\\.topml$" . tuareg-mode))
+              auto-mode-alist))
 
 (load "~/elisp/haskellmode-emacs/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
