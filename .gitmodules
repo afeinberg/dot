@@ -22,3 +22,6 @@
 [submodule "elisp/lua-mode"]
 	path = elisp/lua-mode
 	url = git@github.com:afeinberg/lua-mode.git
+[submodule "elisp/slime"]
+	path = elisp/slime
+	url = https://github.com/antifuchs/slime.git
