@@ -4,9 +4,6 @@
 [submodule "elisp/magit"]
 	path = elisp/magit
 	url = https://github.com/philjackson/magit.git
-[submodule "elisp/slime"]
-	path = elisp/slime
-	url = git://sbcl.boinkor.net/slime.git
 [submodule "elisp/clojure-mode"]
 	path = elisp/clojure-mode
 	url = https://github.com/technomancy/clojure-mode.git
