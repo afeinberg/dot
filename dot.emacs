@@ -281,6 +281,11 @@ Suitable for inclusion in `c-offsets-alist'."
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
+(add-to-list 'load-path
+              "~/elisp/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))

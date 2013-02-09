@@ -25,3 +25,6 @@
 [submodule "elisp/slime"]
 	path = elisp/slime
 	url = https://github.com/antifuchs/slime.git
+[submodule "elisp/yasnippet"]
+	path = elisp/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
