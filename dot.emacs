@@ -257,7 +257,7 @@ Suitable for inclusion in `c-offsets-alist'."
       (comment-current-line-or-region))))
 
 (add-hook 'c-mode-common-hook 'bind-autoindent)
-(add-hook 'python-mode-hook 'bind-autoindent)
+;; (add-hook 'python-mode-hook 'bind-autoindent)
 (add-hook 'tuareg-mode-hook 'bind-autoindent)
 (add-hook 'go-mode-hook 'bind-autoindent)
 
@@ -273,6 +273,7 @@ Suitable for inclusion in `c-offsets-alist'."
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 
 (require 'ipython)
+(setq py-python-command-args '("--colors" "NoColor"))
 
 (require 'go-mode-load)
 
@@ -285,6 +286,24 @@ Suitable for inclusion in `c-offsets-alist'."
               "~/elisp/yasnippet")
 (require 'yasnippet)
 (yas-global-mode 1)
+
+(load "~/elisp/nxhtml/autostart")
+
+(autoload 'pyxl-mode "pyxl-mode" "Major mode for editing pyxl" t)
+(setq auto-mode-alist
+     (cons '("\\.py\\'" . pyxl-mode) auto-mode-alist))
+
+(add-to-list 'load-path "~/elisp/Emacs-Groovy-Mode")
+(autoload 'groovy-mode "groovy-mode" "Groovy mode." t)
+
+(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
+(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
+
+;;; make Groovy mode electric by default.
+(add-hook 'groovy-mode-hook
+          '(lambda ()
+             (require 'groovy-electric)
+             (groovy-electric-mode)))
 
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
