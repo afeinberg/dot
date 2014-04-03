@@ -101,6 +101,8 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (require 'magit)
 
+(require 'ahg)
+
 (setq inferior-lisp-program "sbcl")
 (add-to-list 'load-path "~/elisp/slime")
 (require 'slime)
@@ -305,6 +307,14 @@ Suitable for inclusion in `c-offsets-alist'."
              (require 'groovy-electric)
              (groovy-electric-mode)))
 
+(require 'protobuf-mode)
+
+(add-to-list 'auto-mode-alist '("\\.proto$" . protobuf-mode))
+
+(require 'xcscope)
+(setq cscope-do-not-update-database t)
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
+

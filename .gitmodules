@@ -28,3 +28,6 @@
 [submodule "elisp/Emacs-Groovy-Mode"]
 	path = elisp/Emacs-Groovy-Mode
 	url = git://github.com/russel/Emacs-Groovy-Mode.git
+[submodule "elisp/cider"]
+	path = elisp/cider
+	url = https://github.com/clojure-emacs/cider.git
