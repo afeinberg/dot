@@ -320,6 +320,14 @@ Suitable for inclusion in `c-offsets-alist'."
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
 
+(setq load-path (cons "~/elisp/fsharp" load-path))
+(setq auto-mode-alist (cons '("\\.fs[iylx]?$" . fsharp-mode) auto-mode-alist))
+(autoload 'fsharp-mode "fsharp" "Major mode for editing F# code." t)
+(autoload 'run-fsharp "inf-fsharp" "Run an inferior F# process." t)
+
+(setq inferior-fsharp-program "fsharpi --readline-")
+(setq fsharp-compiler "fsharpc")
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
