@@ -31,3 +31,18 @@
 [submodule "elisp/cider"]
 	path = elisp/cider
 	url = https://github.com/clojure-emacs/cider.git
+[submodule "elisp/auto-complete"]
+	path = elisp/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git
+[submodule "elisp/popup-el"]
+	path = elisp/popup-el
+	url = https://github.com/auto-complete/popup-el
+[submodule "elisp/s.el"]
+	path = elisp/s.el
+	url = https://github.com/magnars/s.el
+[submodule "elisp/dash.el"]
+	path = elisp/dash.el
+	url = https://github.com/magnars/dash.el
+[submodule "elisp/fsharpbinding"]
+	path = elisp/fsharpbinding
+	url = https://github.com/fsharp/fsharpbinding.git

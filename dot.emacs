@@ -86,7 +86,6 @@ Suitable for inclusion in `c-offsets-alist'."
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (require 'tramp)
-(setq tramp-default-method "scpx")
 
 (require 'cperl-mode)
 (defalias 'perl-mode 'cperl-mode)
@@ -320,10 +319,14 @@ Suitable for inclusion in `c-offsets-alist'."
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
 
-(setq load-path (cons "~/elisp/fsharp" load-path))
-(setq auto-mode-alist (cons '("\\.fs[iylx]?$" . fsharp-mode) auto-mode-alist))
-(autoload 'fsharp-mode "fsharp" "Major mode for editing F# code." t)
-(autoload 'run-fsharp "inf-fsharp" "Run an inferior F# process." t)
+(add-to-list 'load-path "~/elisp/auto-complete")
+(add-to-list 'load-path "~/elisp/popup-el")
+(add-to-list 'load-path "~/elisp/s.el")
+(add-to-list 'load-path "~/elisp/dash.el")
+
+(add-to-list 'load-path "~/elisp/fsharpbinding/emacs")
+(autoload 'fsharp-mode "fsharp-mode"     "Major mode for editing F# code." t)
+(add-to-list 'auto-mode-alist '("\\.fs[iylx]?$" . fsharp-mode))
 
 (setq inferior-fsharp-program "fsharpi --readline-")
 (setq fsharp-compiler "fsharpc")
