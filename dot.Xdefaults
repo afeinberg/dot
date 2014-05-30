@@ -1,11 +1,78 @@
 Emacs.verticalScrollBars: off
-URxvt*foreground: #b2b2b2
-URxvt*background: black
-URxvt*scrollBar: false
-URxvt*saveLines: 1000
-
 Emacs.FontBackend: xft
+Emacs*font: Inconsolata-11
 Emacs*foreground: #b2b2b2
 Emacs*background: black
 Emacs*cursorColor: #b2b2b2
 
+URxvt.saveLines:          65535
+URxvt.utmpInhibit:        True
+URxvt.visualBell:         True
+URxvt.scrollBar:          True
+URxvt.scrollTtyKeypress:  True
+URxvt.scrollBar_floating: True
+URxvt.scrollBar_right:    True
+URxvt.scrollColor:        #888888
+URxvt.scrollstyle:        plain
+URxvt.geometry:           90x60
+URxvt.jumpScroll:         false
+URxvt.font:               xft:Inconsolata:pixelsize=14:antialias=true
+URxvt.internalBorder:     0
+URxvt.externalBorder:     0
+URxvt.borderColor:        #444444
+URxvt.meta8:              False
+!URxvt.background:         #000000
+!URxvt.foreground:         #eeeeee
+URxvt.loginShell:         true
+URxvt.cursorBlink:        true
+URxvt.inheritPixmap:      true
+URxvt.tintColor:          white
+URxvt.shading:            15
+!URxvt.fading:             40
+URxvt.cursorColor:        [70]#ff6600
+URxvt.skipBuiltinGlyphs:  true
+URxvt.urlLauncher:        xdg-open
+URxvt.perl-ext-common:    default,matcher,selection
+URxvt.matcher.button:     3
+URxvt.matcher.pattern.1:  \\b(mailto|http|https|ftp|file):[/]*[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+URxvt.matcher.rend.0:     Uline Bold fg8 bg1 
+URxvt.urgentOnBell:       true
+URxvt.mapAlert:           true
+! Blue
+URxvt*color4:             #00a7ff
+URxvt*color12:            #3988ff
+
+URxvt.background:     #121212
+!black
+URxvt.color0:         #353535
+URxvt.color8:         #666666
+!red
+URxvt.color1:         #AE4747
+URxvt.color9:         #EE6363
+!green
+URxvt.color2:         #556B2F
+URxvt.color10:        #9ACD32
+!brown/yellow
+URxvt.color3:         #DAA520
+URxvt.color11:        #FFC125
+!blue
+URxvt.color4:         #6F99B4
+URxvt.color12:        #7C96B0
+!magenta
+URxvt.color5:         #8B7B8B
+URxvt.color13:        #D8BFD8
+!cyan
+URxvt.color6:         #A7A15E
+URxvt.color14:        #F0E68C
+!white
+URxvt.color7:         #DDDDDD
+URxvt.color15:        #FFFFFF
+URxvt.foreground:     #DDDDDD
+
+URxvt*keysym.M-C-1:       command:\033]710;xft:Inconsolata:pixelsize=9:antialias=true\007
+URxvt*keysym.M-C-2:       command:\033]710;xft:Inconsolata:pixelsize=10:antialias=true\007
+URxvt*keysym.M-C-3:       command:\033]710;xft:Inconsolata:pixelsize=11:antialias=true\007
+URxvt*keysym.M-C-4:       command:\033]710;xft:Inconsolata:pixelsize=12:antialias=true\007
+URxvt*keysym.M-C-5:       command:\033]710;xft:Inconsolata:pixelsize=14:antialias=true\007
+URxvt*keysym.M-C-6:       command:\033]710;xft:Inconsolata:pixelsize=16:antialias=true\007
+URxvt*keysym.M-C-7:       command:\033]710;xft:Inconsolata:pixelsize=20:antialias=true\007

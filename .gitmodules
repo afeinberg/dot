@@ -46,3 +46,6 @@
 [submodule "elisp/fsharpbinding"]
 	path = elisp/fsharpbinding
 	url = https://github.com/fsharp/fsharpbinding.git
+[submodule "elisp/auto-complete-clang"]
+	path = elisp/auto-complete-clang
+	url = https://github.com/brianjcj/auto-complete-clang

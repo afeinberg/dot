@@ -74,6 +74,12 @@ Suitable for inclusion in `c-offsets-alist'."
   (interactive)
   (c-add-style "AF" af-c-style t))
 
+(defconst af-protobuf-style
+     '((c-basic-offset . 2)
+       (indent-tabs-mode . nil)))
+(add-hook 'protobuf-mode-hook
+          (lambda () (c-add-style "af-protobuf-style" af-protobuf-style t)))
+
 (show-paren-mode t)
 
 (when (fboundp 'global-font-lock-mode)
@@ -330,6 +336,28 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (setq inferior-fsharp-program "fsharpi --readline-")
 (setq fsharp-compiler "fsharpc")
+
+(add-to-list 'load-path "~/elisp/auto-complete-clang")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/elisp/auto-complete-clang/ac-dict")
+
+(require 'auto-complete-clang)
+(define-key ac-mode-map  [(control tab)] 'auto-complete)
+
+(setq ac-auto-start nil)
+(setq ac-quick-help-delay 0.5)
+
+(defun my-ac-config ()
+  (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
+  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+  (global-auto-complete-mode t))
+
+(defun my-ac-cc-mode-setup ()
+  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
+(add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
+;; ac-source-gtags
+(my-ac-config)
+  
 
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
