@@ -24,7 +24,7 @@
               tab-width 4
               c-basic-offset 4)
 
-(defun google-c-lineup-expression-plus-4 (langelem)
+(defun google-c-lineup-expression-plus-2 (langelem)
   "From Google's C++ style guide
 
 Suitable for inclusion in `c-offsets-alist'."
@@ -37,13 +37,13 @@ Suitable for inclusion in `c-offsets-alist'."
     ;; structure to indent past, it has to be at the beginning of the line.
     (if (looking-at "\\(\\(if\\|for\\|while\\)\\s *(\\)")
         (goto-char (match-end 1)))
-    (vector (+ 4 (current-column)))))
+    (vector (+ 2 (current-column)))))
 
 (defconst af-c-style
-  `((c-basic-offset . 4)
+  `((c-basic-offset . 2)
     (indent-tabs-mode . nil)
     (c-offsets-alist .
-                     ((arglist-intro google-c-lineup-expression-plus-4)
+                     ((arglist-intro google-c-lineup-expression-plus-2)
                       (func-decl-cont . ++)
                       (member-init-intro . ++)
                       (inher-intro . ++)
@@ -108,10 +108,6 @@ Suitable for inclusion in `c-offsets-alist'."
 (global-set-key (kbd "M-X") 'smex-major-mode-commands) 
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-(add-to-list 'load-path "~/elisp/magit")
-
-(require 'magit)
-
 (require 'ahg)
 
 (setq inferior-lisp-program "sbcl")
@@ -160,7 +156,10 @@ Suitable for inclusion in `c-offsets-alist'."
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
 
-(load "~/elisp/haskellmode-emacs/haskell-site-file")
+(add-to-list 'load-path "~/elisp/emacs/haskell-mode/")
+(require 'haskell-mode-autoloads)
+(add-to-list 'Info-default-directory-list "~/lib/emacs/haskell-mode/")
+
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
@@ -179,7 +178,7 @@ Suitable for inclusion in `c-offsets-alist'."
 (global-set-key [(control c)(control g)] 'goto-line)
 
 (defun bind-autoindent ()
-  (local-set-key "\r" 'indent-newline-and-indent))
+g  (local-set-key "\r" 'indent-newline-and-indent))
 
 (defun indent-if-blank ()
   (interactive "*")
@@ -272,6 +271,10 @@ Suitable for inclusion in `c-offsets-alist'."
 (add-hook 'c-mode-common-hook 'bind-autoindent)
 ;; (add-hook 'python-mode-hook 'bind-autoindent)
 (add-hook 'tuareg-mode-hook 'bind-autoindent)
+
+(add-to-list 'load-path "~/elisp/go-mode/")
+(require 'go-mode-autoloads)
+
 (add-hook 'go-mode-hook 'bind-autoindent)
 
 ;; minor flymake configuration
@@ -285,10 +288,8 @@ Suitable for inclusion in `c-offsets-alist'."
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 
-(require 'ipython)
-(setq py-python-command-args '("--colors" "NoColor"))
-
-(require 'go-mode-load)
+;;(require 'ipython)
+;;(setq py-python-command-args '("--colors" "NoColor"))
 
 (add-to-list 'load-path "~/elisp/lua-mode")
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -306,17 +307,11 @@ Suitable for inclusion in `c-offsets-alist'."
 (setq auto-mode-alist
      (cons '("\\.py\\'" . pyxl-mode) auto-mode-alist))
 
-(add-to-list 'load-path "~/elisp/Emacs-Groovy-Mode")
-(autoload 'groovy-mode "groovy-mode" "Groovy mode." t)
-
-(add-to-list 'auto-mode-alist '("\.groovy$" . groovy-mode))
-(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
-
-;;; make Groovy mode electric by default.
-(add-hook 'groovy-mode-hook
-          '(lambda ()
-             (require 'groovy-electric)
-             (groovy-electric-mode)))
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.mdwn\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 (require 'protobuf-mode)
 
@@ -357,7 +352,8 @@ Suitable for inclusion in `c-offsets-alist'."
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
 ;; ac-source-gtags
 (my-ac-config)
-  
+
+(require 'cmake-mode)
 
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)

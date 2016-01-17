@@ -5,8 +5,8 @@ set ruler
 set showcmd
 set showmatch
 set showmode
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set viminfo=
 "set background=dark
 syntax on

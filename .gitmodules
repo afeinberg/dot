@@ -10,9 +10,6 @@
 [submodule "elisp/tuareg-mode"]
 	path = elisp/tuareg-mode
 	url = git@github.com:afeinberg/tuareg-mode.git
-[submodule "elisp/haskellmode-emacs"]
-	path = elisp/haskellmode-emacs
-	url = git://github.com/afeinberg/haskellmode-emacs.git
 [submodule "elisp/smex"]
 	path = elisp/smex
 	url = https://github.com/nonsequitur/smex.git
@@ -25,9 +22,6 @@
 [submodule "elisp/yasnippet"]
 	path = elisp/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
-[submodule "elisp/Emacs-Groovy-Mode"]
-	path = elisp/Emacs-Groovy-Mode
-	url = git://github.com/russel/Emacs-Groovy-Mode.git
 [submodule "elisp/cider"]
 	path = elisp/cider
 	url = https://github.com/clojure-emacs/cider.git
@@ -49,3 +43,9 @@
 [submodule "elisp/auto-complete-clang"]
 	path = elisp/auto-complete-clang
 	url = https://github.com/brianjcj/auto-complete-clang
+[submodule "elisp/haskell-mode"]
+	path = elisp/haskell-mode
+	url = https://github.com/haskell/haskell-mode.git
+[submodule "elisp/go-mode"]
+	path = elisp/go-mode
+	url = https://github.com/dominikh/go-mode.el
