@@ -1,17 +1,18 @@
-set nobackup
+"set nobackup
 set backspace=indent,eol,start
 set nostartofline
 set ruler
 set showcmd
 set showmatch
 set showmode
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set viminfo=
 set background=dark
 syntax on
 
 au FileType perl,c,java,cpp,yaml,python,ruby set smartindent et
+au FileType cpp set sw=2 ts=2
 au FileType make set sw=8 ts=8 autoindent
 au FileType tex set ts=78 ts=2 sw=2 smartindent et
 au FileType ruby set ts=2 sw=2
