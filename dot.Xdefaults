@@ -1,8 +1,10 @@
+! -*-conf-xdefaults-mode-*-
+
 Emacs.verticalScrollBars: off
 Emacs.FontBackend: xft
-Emacs*font: Inconsolata-9
+!Emacs*font: Inconsolata-14
 !Emacs*font: Monospace-9
-Emacs*foreground: #b2b2b2
+Emacs*foreground: #c4c4c4
 Emacs*background: black
 Emacs*cursorColor: #b2b2b2
 
@@ -26,9 +28,9 @@ URxvt.meta8:              False
 !URxvt.foreground:         #eeeeee
 URxvt.loginShell:         true
 URxvt.cursorBlink:        true
-URxvt.inheritPixmap:      true
-URxvt.tintColor:          white
-URxvt.shading:            15
+!URxvt.inheritPixmap:      true
+!URxvt.tintColor:          white
+!URxvt.shading:            15
 !URxvt.fading:             40
 URxvt.cursorColor:        [70]#ff6600
 URxvt.skipBuiltinGlyphs:  true
@@ -43,7 +45,8 @@ URxvt.mapAlert:           true
 URxvt*color4:             #00a7ff
 URxvt*color12:            #3988ff
 
-URxvt.background:     #121212
+!URxvt.background:     #121212
+URxvt.background:	  #000000
 !black
 URxvt.color0:         #353535
 URxvt.color8:         #666666

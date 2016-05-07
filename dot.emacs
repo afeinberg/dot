@@ -156,9 +156,9 @@ Suitable for inclusion in `c-offsets-alist'."
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
 
-(add-to-list 'load-path "~/elisp/emacs/haskell-mode/")
+(add-to-list 'load-path "~/elisp/haskell-mode/")
 (require 'haskell-mode-autoloads)
-(add-to-list 'Info-default-directory-list "~/lib/emacs/haskell-mode/")
+(add-to-list 'Info-default-directory-list "~/elisp/haskell-mode/")
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
