@@ -1,6 +1,7 @@
 Emacs.verticalScrollBars: off
 Emacs.FontBackend: xft
 Emacs*font: Inconsolata-9
+!Emacs*font: Monospace-9
 Emacs*foreground: #b2b2b2
 Emacs*background: black
 Emacs*cursorColor: #b2b2b2
@@ -65,9 +66,9 @@ URxvt.color13:        #D8BFD8
 URxvt.color6:         #A7A15E
 URxvt.color14:        #F0E68C
 !white
-URxvt.color7:         #DDDDDD
+URxvt.color7:         #C4C4C4
 URxvt.color15:        #FFFFFF
-URxvt.foreground:     #DDDDDD
+URxvt.foreground:     #C4C4C4
 
 URxvt*keysym.M-C-1:       command:\033]710;xft:Inconsolata:pixelsize=9:antialias=true\007
 URxvt*keysym.M-C-2:       command:\033]710;xft:Inconsolata:pixelsize=10:antialias=true\007
