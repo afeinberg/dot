@@ -8,7 +8,7 @@ set showmode
 set tabstop=2
 set shiftwidth=2
 set viminfo=
-"set background=dark
+set background=dark
 syntax on
 
 au FileType perl,c,java,cpp,yaml,python,ruby set smartindent et

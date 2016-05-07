@@ -358,4 +358,3 @@ g  (local-set-key "\r" 'indent-newline-and-indent))
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
-

@@ -1,6 +1,6 @@
 Emacs.verticalScrollBars: off
 Emacs.FontBackend: xft
-Emacs*font: Inconsolata-11
+Emacs*font: Inconsolata-9
 Emacs*foreground: #b2b2b2
 Emacs*background: black
 Emacs*cursorColor: #b2b2b2

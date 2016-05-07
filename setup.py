@@ -4,9 +4,12 @@
 from string import Template
 import os
 
-PATHS = dict({'dot.emacs':'${HOME}/.emacs', 
-              'dot.vimrc':'${HOME}/.vimrc',
-              'elisp':'${HOME}/elisp'})
+PATHS = {'dot.emacs': '${HOME}/.emacs',
+         'dot.tmux.conf', '${HOME}/.tmux.conf',
+         'dot.vimrc': '${HOME}/.vimrc',
+         'dot.Xdefaults': '${HOME}/.Xdefaults',
+         'elisp': '${HOME}/elisp'}
+
 
 def setup_paths():
     """Creates symlinks"""
@@ -14,7 +17,7 @@ def setup_paths():
     for origin, destination in PATHS.items():
         home = os.environ['HOME']
         dest_real = Template(destination).substitute(HOME=home)
-        if(os.path.lexists(dest_real)):
+        if os.path.lexists(dest_real):
             print dest_real + " already exists, skipping"
             continue
 
