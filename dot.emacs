@@ -261,7 +261,7 @@ g  (local-set-key "\r" 'indent-newline-and-indent))
     ;; if there already is a comment
     (if (save-excursion
           (goto-char beg)
-          (Forward-comment 1)
+          (forward-comment 1)
           (<= end (point)))
         ;; kill it
         (uncomment-current-line-or-region)
@@ -317,6 +317,9 @@ g  (local-set-key "\r" 'indent-newline-and-indent))
 
 (add-to-list 'auto-mode-alist '("\\.proto$" . protobuf-mode))
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
 
@@ -352,6 +355,14 @@ g  (local-set-key "\r" 'indent-newline-and-indent))
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
 ;; ac-source-gtags
 (my-ac-config)
+
+(defun af/toggle-show-trailing-whitespace ()
+  "Toggle show-trailing-whitespace between t and nil"
+  (interactive)
+  (setq show-trailing-whitespace (not show-trailing-whitespace)))
+
+(setq-default
+ show-trailing-whitespace 't)
 
 (require 'cmake-mode)
 
