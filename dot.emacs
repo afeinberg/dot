@@ -91,7 +91,7 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(require 'tramp)
+;;(require 'tramp)
 
 (require 'cperl-mode)
 (defalias 'perl-mode 'cperl-mode)
@@ -126,8 +126,8 @@ Suitable for inclusion in `c-offsets-alist'."
      (slime-setup '(slime-repl))))
 
 
-(add-to-list 'load-path "~/elisp/clojure-mode")
-(require 'clojure-mode)
+;;(add-to-list 'load-path "~/elisp/clojure-mode")
+;;(require 'clojure-mode)
 ;; (require 'clojure-test-mode)
 
 (autoload 'paredit-mode "paredit"
@@ -178,7 +178,7 @@ Suitable for inclusion in `c-offsets-alist'."
 (global-set-key [(control c)(control g)] 'goto-line)
 
 (defun bind-autoindent ()
-g  (local-set-key "\r" 'indent-newline-and-indent))
+  (local-set-key "\r" 'indent-newline-and-indent))
 
 (defun indent-if-blank ()
   (interactive "*")
