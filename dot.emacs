@@ -11,7 +11,7 @@
       kept-new-versions 6
       kept-old-versions 2
       version-control t
-      
+
       visible-bell t)
 
 (defun set-exec-path-from-shell-PATH ()
@@ -104,8 +104,8 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (require 'smex)
 (smex-initialize)
-(global-set-key (kbd "M-x") 'smex) 
-(global-set-key (kbd "M-X") 'smex-major-mode-commands) 
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (require 'ahg)
@@ -151,7 +151,7 @@ Suitable for inclusion in `c-offsets-alist'."
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code." t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger." t)
 
-(setq auto-mode-alist 
+(setq auto-mode-alist
       (append '(("\\.ml[ily]?$" . tuareg-mode)
                 ("\\.topml$" . tuareg-mode))
               auto-mode-alist))
@@ -281,8 +281,8 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (require 'flymake)
 
-(add-to-list 
- 'flymake-allowed-file-name-masks 
+(add-to-list
+ 'flymake-allowed-file-name-masks
  '("\\.hpp$" flymake-master-make-header-init flymake-master-cleanup))
 
 (require 'textile-mode)
@@ -365,6 +365,19 @@ Suitable for inclusion in `c-offsets-alist'."
  show-trailing-whitespace 't)
 
 (require 'cmake-mode)
+
+(defun is-display-graphic ()
+  (pcase window-system
+    (`ns t)
+    (`x t)
+    (`w32 t)
+    (_ nil)))
+
+(when (is-display-graphic)
+  (setq-default frame-background-mode 'light)
+  (add-to-list 'custom-theme-load-path
+               "~/elisp/emacs-color-theme-solarized")
+  (load-theme 'solarized t))
 
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
