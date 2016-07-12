@@ -7,6 +7,7 @@ import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Config.Xfce
 import XMonad.Config.Desktop
 import XMonad.Hooks.EwmhDesktops
+--import XMonad.Hooks.SetWMName
 import XMonad.Actions.CycleWS
 import XMonad.Layout.SimpleDecoration
 import XMonad.Layout.Magnifier
@@ -43,7 +44,7 @@ import Data.List
 myMod = mod4Mask -- windows key
 myTerminal = "x-terminal-emulator"
 
-myWorkSpaces = ["logs", "main", "web", "chat", "misc", "book", "f1", "f2", "f3" ]
+myWorkSpaces = ["logs", "main", "web", "chat", "misc", "book", "m2", "f1", "f2", "f3" ]
 
 myTheme = defaultTheme
 	{ activeColor         = blue
@@ -78,7 +79,7 @@ myLayout = toggleLayouts Full perWS
                         onWorkspace "f2"   (withTitles $ myFloat) $
                         onWorkspace "f3"   (noTitles   $ myFloat) $
 			                   ((withTitles $ codeFirst) ||| (noTitles $ codeFirst))
-                
+
 		-- modifies a layout to be desktop friendly with title bars
 		-- and avoid the panel.
 		withTitles l = noFrillsDeco shrinkText myTheme $ desktopLayoutModifiers l
@@ -155,7 +156,7 @@ myLayout = toggleLayouts Full perWS
 				                -- Match procmeter
 				procmeter = ClassName "ProcMeter3"
 
-		-- For reading books, I typically want borders on 
+		-- For reading books, I typically want borders on
 		-- the margin of the screen.
 		myBook = ThreeColMid nmaster delta ratio
 			where
@@ -167,7 +168,7 @@ myLayout = toggleLayouts Full perWS
 				ratio   = 2/3
 
                 myFloat = simpleFloat ||| Full
-                
+
 		-- Applies a layout mirrored.
 		mirror base a = reflectHoriz $ a $ reflectHoriz base
 
@@ -185,10 +186,16 @@ myKeys =
 	, ((myMod .|. shiftMask, xK_Tab), bindOn [("chat", rotSlavesUp), ("", rotAllUp)])
 	, ((myMod, xK_d), sendMessage $ NextLayout)
 	, ((myMod, xK_space), sendMessage $ ToggleLayout)
-	, ((myMod, xK_p), spawn "assword gui")        
+	, ((myMod, xK_p), spawn "assword gui")
 	]
 
-myManageHook = composeAll
+
+intellijTweaks = [
+  --ignore IntelliJ autocomplete
+  appName =? "sun-awt-X11-XWindowPeer" <&&> className =? "jetbrains-idea" --> doIgnore
+  ]
+
+myManageHook =
 	-- comes first to partially override default gimp floating behavior
 	[ gimp "toolbox" --> nofloat
 	, gimp "image-window" --> nofloat
@@ -201,11 +208,11 @@ myManageHook = composeAll
 	-- display notifications on all workspaces,
 	-- and avoid focus stealing
         , className =? "Xfce4-notifyd" --> doF W.focusDown <+> doIgnore <+> doF copyToAll
-	]
-	where
-		gimp win = className =? "Gimp" <&&> fmap (win `isSuffixOf`) role
-		role = stringProperty "WM_WINDOW_ROLE"
-		nofloat = ask >>= doF . W.sink
+	] ++ intellijTweaks
+  where
+	gimp win = className =? "Gimp" <&&> fmap (win `isSuffixOf`) role
+	role = stringProperty "WM_WINDOW_ROLE"
+	nofloat = ask >>= doF . W.sink
 
 -- Modified to only operate on floating windows, since I seem to do this by
 -- accident to non-floating.
@@ -222,7 +229,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
 			when (M.member w $ W.floating ws) (f w)
 
 myConfig = xfceConfig
-	{ manageHook = myManageHook
+	{ manageHook = manageHook xfceConfig <+> composeAll myManageHook
 	, layoutHook = myLayout
 	, modMask = myMod
 	, workspaces = myWorkSpaces
