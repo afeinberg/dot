@@ -46,3 +46,15 @@
 [submodule "elisp/go-mode"]
 	path = elisp/go-mode
 	url = https://github.com/dominikh/go-mode.el
+[submodule "magit"]
+	path = elisp/magit
+	url = https://github.com/magit/magit.git
+	branch = origin/tags/2.7.0
+[submodule "elisp/dash"]
+	path = elisp/dash
+	url = https://github.com/magnars/dash.el
+	branch = tags/2.12.1
+[submodule "elisp/with-editor"]
+	path = elisp/with-editor
+	url = https://github.com/magit/with-editor
+	branch = origin/tags/v2.5.1

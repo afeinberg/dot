@@ -379,6 +379,21 @@ Suitable for inclusion in `c-offsets-alist'."
                "~/elisp/emacs-color-theme-solarized")
   (load-theme 'solarized t))
 
+(add-to-list 'load-path
+             "~/elisp/dash")
+
+(add-to-list 'load-path
+             "~/elisp/with-editor")
+
+(add-to-list 'load-path
+             "~/elisp/magit/lisp")
+(require 'magit)
+
+(with-eval-after-load 'info
+  (info-initialize)
+  (add-to-list 'Info-directory-list
+               "~/elisp/magit/Documentation/"))
+
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
     (load-file local-init-file)))
