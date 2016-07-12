@@ -7,6 +7,7 @@ import os
 PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.tmux.conf': '${HOME}/.tmux.conf',
          'dot.vimrc': '${HOME}/.vimrc',
+         'dot.xmonad': '${HOME}/.xmonad',
          'dot.Xdefaults': ['${HOME}/.Xdefaults', '${HOME}/.Xresources'],
          'elisp': '${HOME}/elisp'}
 
