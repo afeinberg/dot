@@ -2,7 +2,7 @@
 
 Emacs.verticalScrollBars: off
 Emacs.FontBackend: xft
-Emacs*font: Monospace-10
+Emacs*font: Monospace-12
 
 !Emacs*foreground: #c4c4c4
 !Emacs*background: black
