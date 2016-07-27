@@ -10,6 +10,7 @@ set shiftwidth=4
 set viminfo=
 set background=light
 set mouse=
+set number
 syntax on
 
 " Syntax colors.
@@ -32,3 +33,7 @@ augroup Mail
     au FileType mail set tw=68 fc=tcqr2 nomodeline et
     au FileType mail set comments+=n:\|
 augroup END
+
+filetype plugin indent on
+
+silent! call pathogen#infect()
