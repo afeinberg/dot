@@ -10,11 +10,18 @@ PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.xmonad': '${HOME}/.xmonad',
          'dot.Xdefaults': ['${HOME}/.Xdefaults', '${HOME}/.Xresources'],
          'elisp': '${HOME}/elisp'}
+PRE = {}
+
+POST = {'dot.vimrc': 'vimrc-post.sh'}
 
 HOME = os.environ['HOME']
 
 
 def _parse_and_copy(src, dest_tmpl):
+    if src in PRE:
+        out = subprocess.check_output([PRE[src]])
+        if len(out):
+            print out
 
     dest_real = Template(dest_tmpl).substitute(HOME=HOME)
     if os.path.lexists(dest_real):
@@ -23,6 +30,11 @@ def _parse_and_copy(src, dest_tmpl):
 
     print src + " => " + dest_real
     os.symlink(os.path.realpath(src), dest_real)
+
+    if src in POST:
+        out = subprocess.check_output([POST[src]])
+        if len(out):
+            print out
 
 
 def setup_paths():
