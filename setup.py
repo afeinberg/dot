@@ -6,13 +6,14 @@ import os
 
 PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.tmux.conf': '${HOME}/.tmux.conf',
+         'dot.oh-my-zsh': '${HOME}/.oh-my-zsh',
          'dot.vimrc': '${HOME}/.vimrc',
          'dot.xmonad': '${HOME}/.xmonad',
+         'dot.zshrc': '${HOME}/.zshrc',
          'dot.Xdefaults': ['${HOME}/.Xdefaults', '${HOME}/.Xresources'],
          'elisp': '${HOME}/elisp'}
 
 HOME = os.environ['HOME']
-
 
 def _parse_and_copy(src, dest_tmpl):
     dest_real = Template(dest_tmpl).substitute(HOME=HOME)
