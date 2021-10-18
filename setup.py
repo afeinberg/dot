@@ -15,7 +15,6 @@ HOME = os.environ['HOME']
 
 
 def _parse_and_copy(src, dest_tmpl):
-
     dest_real = Template(dest_tmpl).substitute(HOME=HOME)
     if os.path.lexists(dest_real):
         print dest_real + " already exists, skipping"
@@ -23,7 +22,6 @@ def _parse_and_copy(src, dest_tmpl):
 
     print src + " => " + dest_real
     os.symlink(os.path.realpath(src), dest_real)
-
 
 def setup_paths():
     """Creates symlinks"""
