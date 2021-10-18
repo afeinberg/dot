@@ -14,6 +14,8 @@
 
       visible-bell t)
 
+(menu-bar-mode 0)
+
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
     (setenv "PATH" path-from-shell)
@@ -157,7 +159,7 @@ Suitable for inclusion in `c-offsets-alist'."
               auto-mode-alist))
 
 (add-to-list 'load-path "~/elisp/haskell-mode/")
-(require 'haskell-mode-autoloads)
+;;(require 'haskell-mode-autoloads)
 (add-to-list 'Info-default-directory-list "~/elisp/haskell-mode/")
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
@@ -365,6 +367,8 @@ Suitable for inclusion in `c-offsets-alist'."
  show-trailing-whitespace 't)
 
 (require 'cmake-mode)
+
+(linum-mode)
 
 (defun is-display-graphic ()
   (pcase window-system
