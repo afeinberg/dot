@@ -58,3 +58,6 @@
 	path = elisp/with-editor
 	url = https://github.com/magit/with-editor
 	branch = origin/tags/v2.5.1
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
