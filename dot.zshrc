@@ -6,7 +6,11 @@ ZSH_THEME="robbyrussell"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 plugins=(git)
-gitAddModified
+
+gitAddModified() {
+ git status|awk -F ':' '/modified/ {print $2}'|xargs git add
+}
+alias gam=gitAddModified
 
 source $ZSH/oh-my-zsh.sh
 
