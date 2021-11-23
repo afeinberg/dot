@@ -102,7 +102,7 @@ Suitable for inclusion in `c-offsets-alist'."
 (ido-mode)
 
 (add-to-list 'load-path "~/elisp")
-(add-to-list 'load-path "~/elisp/smex")
+;;(add-to-list 'load-path "~/elisp/smex")
 
 (require 'smex)
 (smex-initialize)

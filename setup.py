@@ -1,8 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
+
 """Sets up my dotfiles"""
 
 from string import Template
 import os
+
+
+POWERSHELL_PROFILE_PATH = 'C:\Users\${USERNAME}\OneDrive\Desktop\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1'
 
 PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.tmux.conf': '${HOME}/.tmux.conf',
@@ -10,6 +14,7 @@ PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.vimrc': '${HOME}/.vimrc',
          'dot.xmonad': '${HOME}/.xmonad',
          'dot.zshrc': '${HOME}/.zshrc',
+         'dot.oh_my_zsh': '${HOME}.oh-my-zsh',
          'dot.Xdefaults': ['${HOME}/.Xdefaults', '${HOME}/.Xresources'],
          'elisp': '${HOME}/elisp'}
 
