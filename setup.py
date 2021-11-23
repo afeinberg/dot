@@ -3,10 +3,11 @@
 """Sets up my dotfiles"""
 
 from string import Template
+
 import os
+import subprocess
+import shutil
 
-
-POWERSHELL_PROFILE_PATH = 'C:\Users\${USERNAME}\OneDrive\Desktop\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1'
 
 PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.tmux.conf': '${HOME}/.tmux.conf',
@@ -15,10 +16,16 @@ PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.xmonad': '${HOME}/.xmonad',
          'dot.zshrc': '${HOME}/.zshrc',
          'dot.oh_my_zsh': '${HOME}.oh-my-zsh',
-         'dot.Xdefaults': ['${HOME}/.Xdefaults', '${HOME}/.Xresources'],
+         'dot.Xdefaults': '${HOME}/.Xdefaults',
          'elisp': '${HOME}/elisp'}
 
 HOME = os.environ['HOME']
+
+def _powershell_profile_path():
+    ps_exe = shutil.which('powershell')
+    if ps_exe is None:
+        return None
+    return subprocess.run([ps_exe, os.path.join('t', 'GetPSProfilePath.ps1')], stdout=subprocess.PIPE).stdout.decode("utf-8").rstrip()
 
 def _parse_and_copy(src, dest_tmpl):
     dest_real = Template(dest_tmpl).substitute(HOME=HOME)
@@ -31,6 +38,11 @@ def _parse_and_copy(src, dest_tmpl):
 
 def setup_paths():
     """Creates symlinks"""
+
+    paths = PATHS
+    ps_profile_path = _powershell_profile_path()
+    if ps_profile_path is not None:
+        paths['dot.powershell.ps1'] = ps_profile_path
 
     for origin, destination in PATHS.items():
         if isinstance(destination, list):

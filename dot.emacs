@@ -11,10 +11,13 @@
       kept-new-versions 6
       kept-old-versions 2
       version-control t
-
       visible-bell t)
 
 (menu-bar-mode 0)
+(if (fboundp 'tool-bar-mode)
+    (tool-bar-mode 0))
+
+(global-linum-mode 1)
 
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
@@ -71,6 +74,11 @@ Suitable for inclusion in `c-offsets-alist'."
                       (inclass . +))))
   "My personal C/C++ style")
 
+(defun add-to-load-path-if-exists (file)
+  "Add a filen to load path if it exists."
+  (if (file-exists-p file)
+      (add-to-list 'load-path file)))
+
 (defun af-set-c-style ()
   "Set to my personal C/C++ Style"
   (interactive)
@@ -93,7 +101,7 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-;;(require 'tramp)
+(require 'tramp nil 'noerror)
 
 (require 'cperl-mode)
 (defalias 'perl-mode 'cperl-mode)
@@ -102,7 +110,7 @@ Suitable for inclusion in `c-offsets-alist'."
 (ido-mode)
 
 (add-to-list 'load-path "~/elisp")
-;;(add-to-list 'load-path "~/elisp/smex")
+(add-to-list 'load-path "~/elisp/smex") 
 
 (require 'smex)
 (smex-initialize)
@@ -128,9 +136,9 @@ Suitable for inclusion in `c-offsets-alist'."
      (slime-setup '(slime-repl))))
 
 
-;;(add-to-list 'load-path "~/elisp/clojure-mode")
-;;(require 'clojure-mode)
-;; (require 'clojure-test-mode)
+(add-to-list 'load-path "~/elisp/clojure-mode")
+(require 'clojure-mode)
+(require 'clojure-test-mode)
 
 (autoload 'paredit-mode "paredit"
   "Minor mode for pseudo-structurally editing Lisp code." t)
@@ -290,8 +298,19 @@ Suitable for inclusion in `c-offsets-alist'."
 (require 'textile-mode)
 (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))
 
-;;(require 'ipython)
-;;(setq py-python-command-args '("--colors" "NoColor"))
+;; Ipython. This python-mode takes the Key-map and the menu
+(when (executable-find "ipython")
+  (setq
+   python-shell-interpreter "ipython"
+   python-shell-interpreter-args ""
+   python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+   python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+   python-shell-completion-setup-code
+   "from IPython.core.completerlib import module_completion"
+   python-shell-completion-module-string-code
+   "';'.join(module_completion('''%s'''))\n"
+   python-shell-completion-string-code
+   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
 
 (add-to-list 'load-path "~/elisp/lua-mode")
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -337,11 +356,11 @@ Suitable for inclusion in `c-offsets-alist'."
 (setq inferior-fsharp-program "fsharpi --readline-")
 (setq fsharp-compiler "fsharpc")
 
-(add-to-list 'load-path "~/elisp/auto-complete-clang")
-(require 'auto-complete-config)
+(add-to-load-path-if-exists "~/elisp/auto-complete-clang")
+(require 'auto-complete-config nil 'noerror)
 (add-to-list 'ac-dictionary-directories "~/elisp/auto-complete-clang/ac-dict")
 
-(require 'auto-complete-clang)
+(require 'auto-complete-clang nil 'noerror)
 (define-key ac-mode-map  [(control tab)] 'auto-complete)
 
 (setq ac-auto-start nil)
@@ -368,8 +387,6 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (require 'cmake-mode)
 
-(linum-mode)
-
 (defun is-display-graphic ()
   (pcase window-system
     (`ns t)
@@ -391,6 +408,13 @@ Suitable for inclusion in `c-offsets-alist'."
 
 (add-to-list 'load-path
              "~/elisp/magit/lisp")
+
+(let ((local-init-file "~/.emacs.local"))
+  (when (file-readable-p local-init-file)
+    (load-file local-init-file)))
+
+;; Last as it causes issues on windows.
+
 (require 'magit)
 
 (with-eval-after-load 'info
@@ -398,6 +422,3 @@ Suitable for inclusion in `c-offsets-alist'."
   (add-to-list 'Info-directory-list
                "~/elisp/magit/Documentation/"))
 
-(let ((local-init-file "~/.emacs.local"))
-  (when (file-readable-p local-init-file)
-    (load-file local-init-file)))
