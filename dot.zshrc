@@ -1,6 +1,6 @@
 # vim: ft=zsh
 
-export ZSH="/Users/alex/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time

@@ -15,7 +15,6 @@ PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.vimrc': '${HOME}/.vimrc',
          'dot.xmonad': '${HOME}/.xmonad',
          'dot.zshrc': '${HOME}/.zshrc',
-         'dot.oh_my_zsh': '${HOME}.oh-my-zsh',
          'dot.Xdefaults': '${HOME}/.Xdefaults',
          'elisp': '${HOME}/elisp'}
 

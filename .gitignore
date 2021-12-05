@@ -2,4 +2,5 @@
 */xmonad.errors
 */xmonad.hi
 */xmonad.o
-
+.fake
+.ionide
