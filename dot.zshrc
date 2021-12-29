@@ -4,7 +4,7 @@ gitAddModified() {
  git status|awk -F ':' '/modified/ {print $2}'|xargs git add
 }
 alias gam=gitAddModified
-alias ls='ls -G'
+alias ls='ls --color -F'
 
 test -r "${HOME}/.opam/opam-init/init.zsh" && . "${HOME}/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null || true
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
