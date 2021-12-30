@@ -1,7 +1,3 @@
-" sensible.vim - Defaults everyone can agree on
-" Maintainer:   Tim Pope <http://tpo.pe/>
-" Version:      1.1
-
 if &compatible
   finish
 else
@@ -90,7 +86,8 @@ set showmode
 set tabstop=4
 set shiftwidth=4
 set viminfo=
-set background=light
+set background=dark
+colorscheme solarized
 set mouse=
 set number
 syntax on
@@ -103,6 +100,17 @@ python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 
+packadd! ale
+
+let g:ale_linters = {
+\  'rust': ['analyzer'],
+\}
+let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
+
+set guioptions-=T
+
 " Allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
@@ -114,3 +122,7 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 endif
 
 inoremap <C-U> <C-G>u<C-U>
+
+packloadall
+silent! helptags ALL
+
