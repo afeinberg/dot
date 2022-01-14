@@ -96,9 +96,11 @@ filetype plugin indent on
 
 silent! call pathogen#infect()
 
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+let powerline_rtp_path=$PY3_SITE_PACKAGES . "/powerline/bindings/vim"
+if isdirectory(powerline_rtp_path)
+	let &rtp = powerline_rtp_path.','.&rtp
+	let g:pymcd_powerline="py3"
+endif
 
 packadd! ale
 

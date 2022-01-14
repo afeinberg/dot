@@ -17,6 +17,8 @@ unalias gg
 alias gam=gitAddModified
 alias ls='ls --color -F'
 
+export PY3_SITE_PACKAGES=$(pip3 2>/dev/null show powerline-status|awk -F ': ' '$1 == "Location" {print $2}')
+
 # Misc tools
 test -r "${HOME}/.opam/opam-init/init.zsh" && . "${HOME}/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null || true
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
