@@ -8,7 +8,6 @@ import os
 import subprocess
 import shutil
 
-
 PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.tmux.conf': '${HOME}/.tmux.conf',
          'dot.oh-my-zsh': '${HOME}/.oh-my-zsh',
@@ -18,13 +17,18 @@ PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.Xdefaults': '${HOME}/.Xdefaults',
          'elisp': '${HOME}/elisp'}
 
+VIM_PLUGINS = {
+    'ale': "git clone --depth 1 ßhttps://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale"}
+
 HOME = os.environ['HOME']
+
 
 def _powershell_profile_path():
     ps_exe = shutil.which('powershell')
     if ps_exe is None:
         return None
     return subprocess.run([ps_exe, os.path.join('t', 'GetPSProfilePath.ps1')], stdout=subprocess.PIPE).stdout.decode("utf-8").rstrip()
+
 
 def _parse_and_copy(src, dest_tmpl):
     dest_real = Template(dest_tmpl).substitute(HOME=HOME)
@@ -34,6 +38,7 @@ def _parse_and_copy(src, dest_tmpl):
 
     print(src + " => " + dest_real)
     os.symlink(os.path.realpath(src), dest_real)
+
 
 def setup_paths():
     """Creates symlinks"""
@@ -50,5 +55,15 @@ def setup_paths():
         else:
             _parse_and_copy(origin, destination)
 
+
+def install_vim_plugins():
+    """Install vim plugins"""
+    for plugin_name, install_cmd in VIM_PLUGINS.items():
+        install_return_code = os.system(install_cmd)
+        if install_return_code != 0:
+            print("error code was: %d" % install_return_code)
+
+
 if __name__ == "__main__":
     setup_paths()
+    install_vim_plugins()

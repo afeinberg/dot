@@ -87,7 +87,11 @@ set tabstop=4
 set shiftwidth=4
 set viminfo=
 set background=dark
-colorscheme solarized
+
+if filereadable($HOME . "/.vim/colors/solarized.vim")
+	colorscheme solarized
+endif
+
 set mouse=
 set number
 syntax on
