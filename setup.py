@@ -18,7 +18,7 @@ PATHS = {'dot.emacs': '${HOME}/.emacs',
          'elisp': '${HOME}/elisp'}
 
 VIM_PLUGINS = {
-    'ale': "git clone --depth 1 ßhttps://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale"}
+    'ale': "git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale"}
 
 HOME = os.environ['HOME']
 
