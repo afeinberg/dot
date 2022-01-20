@@ -10,7 +10,7 @@ import shutil
 
 PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.tmux.conf': '${HOME}/.tmux.conf',
-         'dot.oh-my-zsh': '${HOME}/.oh-my-zsh',
+         'oh-my-zsh': '${HOME}/.oh-my-zsh',
          'dot.vimrc': '${HOME}/.vimrc',
          'dot.xmonad': '${HOME}/.xmonad',
          'dot.zshrc': '${HOME}/.zshrc',
