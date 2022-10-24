@@ -3,21 +3,21 @@
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin')
-  -- Official plugin to make configuring the built-in LSP easier
-  Plug 'neovim/nvim-lspconfig'
-  -- Plugin that makes configuring rust-analyzer easier
-  Plug 'simrat39/rust-tools.nvim'
+	-- Official plugin to make configuring the built-in LSP easier
+	Plug 'neovim/nvim-lspconfig'
+	-- Plugin that makes configuring rust-analyzer easier
+	Plug 'simrat39/rust-tools.nvim'
 
-  --Plug 'kyazdani42/nvim-web-devicons'
-  Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
-  Plug 'junegunn/fzf.vim'
+	--Plug 'kyazdani42/nvim-web-devicons'
+	Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
+	Plug 'junegunn/fzf.vim'
 
-  Plug 'overcache/NeoSolarized'
-   Plug 'vim-airline/vim-airline'
-   Plug 'vim-airline/vim-airline-themes'
-   Plug 'chriskempson/base16-vim'
-   Plug 'kyazdani42/nvim-web-devicons'
-   Plug 'onsails/lspkind-nvim'
+	Plug 'overcache/NeoSolarized'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'chriskempson/base16-vim'
+	Plug 'kyazdani42/nvim-web-devicons'
+	Plug 'onsails/lspkind-nvim'
 vim.call('plug#end')
 
 -- Always show the error column so the editor doesn't bounce around
