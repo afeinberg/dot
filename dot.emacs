@@ -406,8 +406,8 @@ Suitable for inclusion in `c-offsets-alist'."
 (add-to-list 'load-path
              "~/elisp/with-editor")
 
-(add-to-list 'load-path
-             "~/elisp/magit/lisp")
+;; (add-to-list 'load-path
+;;              "~/elisp/magit/lisp")
 
 (let ((local-init-file "~/.emacs.local"))
   (when (file-readable-p local-init-file)
@@ -415,9 +415,10 @@ Suitable for inclusion in `c-offsets-alist'."
 
 ;; Last as it causes issues on windows.
 
-(require 'magit)
+;;(require 'magit)
 
-(with-eval-after-load 'info
-  (info-initialize)
-  (add-to-list 'Info-directory-list
-               "~/elisp/magit/Documentation/"))
+
+;; (with-eval-after-load 'info
+;;   (info-initialize)
+;;   (add-to-list 'Info-directory-list
+;;                "~/elisp/magit/Documentation/"))

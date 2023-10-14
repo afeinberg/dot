@@ -17,20 +17,23 @@ PATHS = {'dot.emacs': '${HOME}/.emacs',
          'dot.Xdefaults': '${HOME}/.Xdefaults',
          'elisp': '${HOME}/elisp'}
 
-VIM_PLUGINS = {
-    'ale': "git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale"}
+PLUGINS = {'ale': "git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.vim/pack/git-plugins/start/ale",
+           'zsh-dircolors-solarized': "git clone --recursive https://github.com/joel-porquet/zsh-dircolors-solarized ~/.oh-my-zsh/custom/plugins/zsh-dircolors-solarized"}
 
 HOME = os.environ['HOME']
 
 
-def _powershell_profile_path():
+def _powershell_profile_path() -> (str | None):
     ps_exe = shutil.which('powershell')
     if ps_exe is None:
         return None
-    return subprocess.run([ps_exe, os.path.join('t', 'GetPSProfilePath.ps1')], stdout=subprocess.PIPE).stdout.decode("utf-8").rstrip()
+    return subprocess.run(
+        [ps_exe, os.path.join('t', 'GetPSProfilePath.ps1')],
+        stdout=subprocess.PIPE
+    ).stdout.decode("utf-8").rstrip()
 
 
-def _parse_and_copy(src, dest_tmpl):
+def _parse_and_copy(src: str, dest_tmpl: str):
     dest_real = Template(dest_tmpl).substitute(HOME=HOME)
     if os.path.lexists(dest_real):
         print(dest_real + " already exists, skipping")
@@ -56,9 +59,9 @@ def setup_paths():
             _parse_and_copy(origin, destination)
 
 
-def install_vim_plugins():
-    """Install vim plugins"""
-    for plugin_name, install_cmd in VIM_PLUGINS.items():
+def install_plugins():
+    """Install extra plugins"""
+    for plugin_name, install_cmd in PLUGINS.items():
         install_return_code = os.system(install_cmd)
         if install_return_code != 0:
             print("error code was: %d" % install_return_code)
@@ -66,4 +69,4 @@ def install_vim_plugins():
 
 if __name__ == "__main__":
     setup_paths()
-    install_vim_plugins()
+    install_plugins()

@@ -1,21 +1,27 @@
+# -*-shell-script-*-
 # vim: ft=zsh
 
 # Custom functions
 gitAddModified() {
- git status|awk -F ':' '/modified/ {print $2}'|xargs git add
+ git status|grep modified|awk -F ' ' '{print $2}'|xargs git add
 }
 
 # OMZ
 export ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-plugins=(git fzf)
+plugins=(git fzf zsh-dircolors-solarized) # run lssolarized then setupsolarized to use
+
 test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
+
 source $ZSH/oh-my-zsh.sh
 unalias gam
-unalias gg
+#unalias gg
 alias gam=gitAddModified
 alias ls='ls --color -F'
+
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
 
 export PY3_SITE_PACKAGES=$(pip3 2>/dev/null show powerline-status|awk -F ': ' '$1 == "Location" {print $2}')
 
