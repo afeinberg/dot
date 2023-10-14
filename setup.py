@@ -3,6 +3,7 @@
 """Sets up my dotfiles"""
 
 from string import Template
+from typing import Optional
 
 import os
 import subprocess
@@ -23,7 +24,7 @@ PLUGINS = {'ale': "git clone --depth 1 https://github.com/dense-analysis/ale.git
 HOME = os.environ['HOME']
 
 
-def _powershell_profile_path() -> (str | None):
+def _powershell_profile_path() -> Optional[str]:
     ps_exe = shutil.which('powershell')
     if ps_exe is None:
         return None
